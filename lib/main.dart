@@ -1,6 +1,6 @@
-import 'package:e_commerce/sources/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:e_commerce/sources/index.dart';
 
 void main() {
   runApp(MyApp());
