@@ -1,6 +1,6 @@
 # e_commerce
 
-A new Flutter project.
+<img src="scr.jpg" width="540" />
 
 ## Getting Started
 
