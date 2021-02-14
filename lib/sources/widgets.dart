@@ -31,27 +31,31 @@ Container socialButton({String img}) => Container(
       ),
     );
 
-Container primaryButton(Size s, {String title}) => Container(
-      width: s.width,
-      height: hh(48),
-      decoration: BoxDecoration(
-        color: primary,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFEF3651).withOpacity(0.35),
-            offset: Offset(0, 4),
-            blurRadius: 8,
-          ),
-        ],
-      ),
-      child: Center(
-        child: Text(
-          title.toUpperCase(),
-          style: TextStyle(
-            color: text,
-            fontSize: 18,
-            letterSpacing: 1,
+Widget primaryButton(Size s, {String title, Function function}) =>
+    GestureDetector(
+      onTap: function,
+      child: Container(
+        width: s.width,
+        height: hh(48),
+        decoration: BoxDecoration(
+          color: primary,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFFEF3651).withOpacity(0.35),
+              offset: Offset(0, 4),
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            title.toUpperCase(),
+            style: TextStyle(
+              color: text,
+              fontSize: 18,
+              letterSpacing: 1,
+            ),
           ),
         ),
       ),

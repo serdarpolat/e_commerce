@@ -1,6 +1,7 @@
 import 'package:e_commerce/sources/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 
 class ListLayout extends StatelessWidget {
   @override
@@ -9,28 +10,54 @@ class ListLayout extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
         top: hh(88) + ww(16),
-        bottom: hh(83) + ww(16),
+        bottom: hh(83 - 16.0) + ww(16),
       ),
       width: s.width,
       height: s.height,
       color: bg,
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            header(),
-            SizedBox(height: hh(12)),
-            shortCuts(s),
-            SizedBox(height: hh(36)),
-            filters(),
-            SizedBox(height: hh(26)),
-            ...List.generate(listItems.length, (index) {
-              return listItem(
-                listItem: listItems[index],
-              );
-            }),
-          ],
+        child: Consumer<ListGridState>(
+          builder: (BuildContext context, state, Widget child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                header(),
+                SizedBox(height: hh(12)),
+                shortCuts(s),
+                SizedBox(height: hh(36)),
+                filters(
+                    state: state,
+                    ontap: () {
+                      if (state.listType == "list") {
+                        state.changeType("grid");
+                      } else {
+                        state.changeType("list");
+                      }
+                    }),
+                SizedBox(height: hh(26)),
+                if (state.listType == "list")
+                  ...List.generate(listItems.length, (index) {
+                    return listItem(listItem: listItems[index]);
+                  })
+                else
+                  Container(
+                    width: ww(343),
+                    margin: EdgeInsets.symmetric(horizontal: ww(16)),
+                    child: Wrap(
+                      spacing: ww(15),
+                      runSpacing: hh(16),
+                      children: List.generate(
+                        listItems.length,
+                        (index) {
+                          return gridItem(listItem: listItems[index]);
+                        },
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -66,7 +93,7 @@ Widget shortCuts(Size s) => Container(
       ),
     );
 
-Widget filters() => Padding(
+Widget filters({Function ontap, ListGridState state}) => Padding(
       padding: EdgeInsets.symmetric(
         horizontal: ww(16),
       ),
@@ -109,10 +136,13 @@ Widget filters() => Padding(
               ),
             ],
           ),
-          Icon(
-            Icons.view_module,
-            color: white,
-            size: 36,
+          GestureDetector(
+            onTap: ontap,
+            child: Icon(
+              state.listType == "list" ? Icons.view_module : Icons.list,
+              color: white,
+              size: 36,
+            ),
           ),
         ],
       ),
@@ -185,6 +215,72 @@ List<ListItemModel> listItems = [
     price: 51,
   ),
 ];
+
+Widget gridItem({ListItemModel listItem}) => Container(
+      width: ww(164),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: ww(164),
+            height: hh(184),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(ww(8)),
+              image: DecorationImage(
+                image: AssetImage(
+                    "assets/images/images/w_top_${listItem.img}.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(height: hh(7)),
+          RatingBar.builder(
+            initialRating: listItem.like,
+            minRating: 1,
+            direction: Axis.horizontal,
+            allowHalfRating: true,
+            itemSize: ww(13),
+            itemCount: 5,
+            itemPadding: EdgeInsets.symmetric(horizontal: 1),
+            itemBuilder: (context, _) => Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            unratedColor: gray,
+            onRatingUpdate: (rating) {
+              print(rating);
+            },
+          ),
+          SizedBox(height: hh(6)),
+          Text(
+            listItem.brand,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: gray,
+            ),
+          ),
+          SizedBox(height: hh(5)),
+          Text(
+            listItem.product,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: white,
+            ),
+          ),
+          SizedBox(height: hh(4)),
+          Text(
+            "${listItem.price}\$",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: white,
+            ),
+          ),
+        ],
+      ),
+    );
 
 Widget listItem({ListItemModel listItem}) => Padding(
       padding: EdgeInsets.only(left: ww(16), right: ww(16), bottom: hh(32)),
@@ -266,7 +362,7 @@ Widget listItem({ListItemModel listItem}) => Padding(
                         ),
                         Spacer(),
                         Text(
-                          "${listItem.product}\$",
+                          "${listItem.price}\$",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

@@ -19,3 +19,25 @@ class CategoryPageState with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class ListGridState with ChangeNotifier {
+  String _listType = "list";
+
+  String get listType => _listType;
+
+  changeType(String listType) {
+    _listType = listType;
+    notifyListeners();
+  }
+}
+
+class PromoListState with ChangeNotifier {
+  bool _isOpened = false;
+
+  bool get isOpened => _isOpened;
+
+  changePromoState() {
+    _isOpened = !_isOpened;
+    notifyListeners();
+  }
+}

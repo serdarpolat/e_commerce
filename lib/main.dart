@@ -13,9 +13,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => PageState()),
         ChangeNotifierProvider(create: (_) => CategoryPageState()),
+        ChangeNotifierProvider(create: (_) => ListGridState()),
+        ChangeNotifierProvider(create: (_) => PromoListState()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Shopper',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

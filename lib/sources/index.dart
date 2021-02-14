@@ -21,5 +21,6 @@ export 'package:e_commerce/pages/shop/shop_widgets.dart';
 export 'package:e_commerce/pages/shop/choose_category.dart';
 export 'package:e_commerce/pages/shop/list_layout.dart';
 export 'package:e_commerce/pages/bag/bag_page.dart';
+export 'package:e_commerce/pages/bag/check_out.dart';
 export 'package:e_commerce/pages/favorites/favorites_page.dart';
 export 'package:e_commerce/pages/profile/profile_page.dart';
