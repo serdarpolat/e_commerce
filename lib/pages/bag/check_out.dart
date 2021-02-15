@@ -184,7 +184,11 @@ class CheckOut extends StatelessWidget {
               ),
             ),
             SizedBox(height: ww(16)),
-            padding(child: primaryButton(s, title: "SUBMIT ORDER")),
+            padding(
+                child: primaryButton(s, title: "SUBMIT ORDER", function: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => PaymentMethod()));
+            })),
           ],
         ),
       ),

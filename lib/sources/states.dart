@@ -41,3 +41,14 @@ class PromoListState with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class AddCardState with ChangeNotifier {
+  bool _isOpened = false;
+
+  bool get isOpened => _isOpened;
+
+  changeAddCardState() {
+    _isOpened = !_isOpened;
+    notifyListeners();
+  }
+}

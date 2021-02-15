@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CategoryPageState()),
         ChangeNotifierProvider(create: (_) => ListGridState()),
         ChangeNotifierProvider(create: (_) => PromoListState()),
+        ChangeNotifierProvider(create: (_) => AddCardState()),
       ],
       child: MaterialApp(
         title: 'Shopper',
