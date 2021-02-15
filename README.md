@@ -1,6 +1,6 @@
 # e_commerce
 
-<img src="scr.jpg" width="540" />
+<img src="scr.jpg" width="360" />
 
 ## Getting Started
 
