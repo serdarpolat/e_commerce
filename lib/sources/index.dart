@@ -23,5 +23,8 @@ export 'package:e_commerce/pages/shop/list_layout.dart';
 export 'package:e_commerce/pages/bag/bag_page.dart';
 export 'package:e_commerce/pages/bag/check_out.dart';
 export 'package:e_commerce/pages/bag/payment_method.dart';
+export 'package:e_commerce/pages/bag/shipping_addresses.dart';
+export 'package:e_commerce/pages/bag/add_shipping_address.dart';
+export 'package:e_commerce/pages/bag/successed.dart';
 export 'package:e_commerce/pages/favorites/favorites_page.dart';
 export 'package:e_commerce/pages/profile/profile_page.dart';

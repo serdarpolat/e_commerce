@@ -39,13 +39,24 @@ class PaymentMethod extends StatelessWidget {
                         ),
                         SizedBox(height: hh(21)),
                         padding(
-                          child: paymentCard(
-                              img: "card_bg1", name: "Jane Doe", date: "05/23"),
+                          child: GestureDetector(
+                            onTap: () =>
+                                pushPage(Successed(), context: context),
+                            child: paymentCard(
+                                img: "card_bg1",
+                                name: "Jane Doe",
+                                date: "05/23"),
+                          ),
                         ),
                         SizedBox(height: hh(40)),
-                        padding(
-                          child: paymentCard(
-                              img: "card_bg2", name: "Jane Doe", date: "05/23"),
+                        GestureDetector(
+                          onTap: () => pushPage(Successed(), context: context),
+                          child: padding(
+                            child: paymentCard(
+                                img: "card_bg2",
+                                name: "Jane Doe",
+                                date: "05/23"),
+                          ),
                         ),
                         SizedBox(height: hh(40)),
                         padding(

@@ -52,3 +52,14 @@ class AddCardState with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class Addr1CheckBox with ChangeNotifier {
+  bool _isChecked = false;
+
+  bool get isChecked => _isChecked;
+
+  changeChecked() {
+    _isChecked = !_isChecked;
+    notifyListeners();
+  }
+}

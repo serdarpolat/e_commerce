@@ -22,7 +22,7 @@ class CheckOut extends StatelessWidget {
             SizedBox(height: hh(31)),
             padding(
               child: Text(
-                "Shipping adsress",
+                "Shipping address",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -50,12 +50,18 @@ class CheckOut extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Text(
-                          "Change",
-                          style: TextStyle(
-                            color: primary,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                        GestureDetector(
+                          onTap: () =>
+                              pushPage(ShippingAddresses(), context: context),
+                          child: Container(
+                            child: Text(
+                              "Change",
+                              style: TextStyle(
+                                color: primary,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -178,6 +184,9 @@ class CheckOut extends StatelessWidget {
                   children: [
                     amount(title: "Order", price: "112"),
                     amount(title: "Delivery", price: "15"),
+                    Divider(
+                      color: gray,
+                    ),
                     amount(title: "Summary", price: "127"),
                   ],
                 ),
@@ -185,10 +194,10 @@ class CheckOut extends StatelessWidget {
             ),
             SizedBox(height: ww(16)),
             padding(
-                child: primaryButton(s, title: "SUBMIT ORDER", function: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PaymentMethod()));
-            })),
+                child: primaryButton(s,
+                    title: "SUBMIT ORDER",
+                    function: () =>
+                        pushPage(PaymentMethod(), context: context))),
           ],
         ),
       ),

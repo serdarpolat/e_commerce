@@ -1,5 +1,6 @@
 import 'package:e_commerce/sources/index.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Row forgotOrHaveAccount({String title}) => Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -246,3 +247,6 @@ Widget likeButton({Color color}) => Container(
         ],
       ),
     );
+
+Future<dynamic> pushPage(Widget page, {BuildContext context}) =>
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));

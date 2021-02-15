@@ -14,12 +14,16 @@ class BagPage extends StatelessWidget {
             builder: (context, state, child) {
               return Stack(
                 children: [
-                  pageLayout(s, ontap: () {
-                    state.changePromoState();
-                  }, function: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CheckOut()));
-                  }),
+                  pageLayout(
+                    s,
+                    ontap: () {
+                      state.changePromoState();
+                    },
+                    function: () => pushPage(
+                      CheckOut(),
+                      context: context,
+                    ),
+                  ),
                   topBar(s),
                   promoCodeLayout(s, state: state, onpressed: () {
                     state.changePromoState();
