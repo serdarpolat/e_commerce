@@ -4,6 +4,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class ListLayout extends StatelessWidget {
+  final Function openSort;
+
+  const ListLayout({Key key, this.openSort}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
@@ -27,7 +30,9 @@ class ListLayout extends StatelessWidget {
                 shortCuts(s),
                 SizedBox(height: hh(36)),
                 filters(
+                    context: context,
                     state: state,
+                    openSort: openSort,
                     ontap: () {
                       if (state.listType == "list") {
                         state.changeType("grid");
@@ -93,48 +98,59 @@ Widget shortCuts(Size s) => Container(
       ),
     );
 
-Widget filters({Function ontap, ListGridState state}) => Padding(
+Widget filters(
+        {BuildContext context,
+        Function ontap,
+        Function openSort,
+        ListGridState state}) =>
+    Padding(
       padding: EdgeInsets.symmetric(
         horizontal: ww(16),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Icon(
-                Icons.filter_list,
-                color: white,
-                size: 36,
-              ),
-              SizedBox(width: ww(7)),
-              Text(
-                "Filters",
-                style: TextStyle(
-                  fontSize: 14,
+          GestureDetector(
+            onTap: () => pushPage(Filters(), context: context),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.filter_list,
                   color: white,
-                  fontWeight: FontWeight.w500,
+                  size: 36,
                 ),
-              ),
-            ],
+                SizedBox(width: ww(7)),
+                Text(
+                  "Filters",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Icon(
-                Icons.swap_vert,
-                color: white,
-                size: 36,
-              ),
-              SizedBox(width: ww(7)),
-              Text(
-                "Price: lowest to high",
-                style: TextStyle(
-                  fontSize: 14,
+          GestureDetector(
+            onTap: openSort,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.swap_vert,
                   color: white,
-                  fontWeight: FontWeight.w500,
+                  size: 36,
                 ),
-              ),
-            ],
+                SizedBox(width: ww(7)),
+                Text(
+                  "Price: lowest to high",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
           GestureDetector(
             onTap: ontap,
