@@ -8,30 +8,31 @@ class BagPage extends StatelessWidget {
     Size s = MediaQuery.of(context).size;
     return Container(
       height: s.height,
-      child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Consumer<PromoListState>(
-            builder: (context, state, child) {
-              return Stack(
-                children: [
-                  pageLayout(
-                    s,
-                    ontap: () {
-                      state.changePromoState();
-                    },
-                    function: () => pushPage(
-                      CheckOut(),
-                      context: context,
-                    ),
-                  ),
-                  topBar(s),
-                  promoCodeLayout(s, state: state, onpressed: () {
+      child: Consumer<PromoListState>(
+        builder: (context, state, child) {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: pageLayout(
+                  s,
+                  ontap: () {
                     state.changePromoState();
-                  }),
-                ],
-              );
-            },
-          )),
+                  },
+                  function: () => pushPage(
+                    CheckOut(),
+                    context: context,
+                  ),
+                ),
+              ),
+              topBar(s),
+              promoCodeLayout(s, state: state, onpressed: () {
+                state.changePromoState();
+              }),
+            ],
+          );
+        },
+      ),
     );
   }
 }
@@ -135,17 +136,6 @@ Widget closePromoListButton(Size s, {Function onpressed}) => Positioned(
       ),
     );
 
-Widget topBar(Size s) => Container(
-      width: s.width,
-      height: hh(88),
-      color: bg,
-      alignment: Alignment.bottomRight,
-      child: IconButton(
-        icon: Icon(Icons.search),
-        color: white,
-        onPressed: () {},
-      ),
-    );
 Widget pageLayout(Size s, {Function ontap, Function function}) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

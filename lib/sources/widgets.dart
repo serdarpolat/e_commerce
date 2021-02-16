@@ -248,5 +248,17 @@ Widget likeButton({Color color}) => Container(
       ),
     );
 
+Widget topBar(Size s) => Container(
+      width: s.width,
+      height: hh(88),
+      color: bg,
+      alignment: Alignment.bottomRight,
+      child: IconButton(
+        icon: Icon(Icons.search),
+        color: white,
+        onPressed: () {},
+      ),
+    );
+
 Future<dynamic> pushPage(Widget page, {BuildContext context}) =>
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
