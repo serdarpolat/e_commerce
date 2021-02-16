@@ -34,3 +34,4 @@ export 'package:e_commerce/pages/profile/my_profile.dart';
 export 'package:e_commerce/pages/profile/my_orders.dart';
 export 'package:e_commerce/pages/profile/order_details.dart';
 export 'package:e_commerce/pages/profile/settings.dart';
+export 'package:e_commerce/pages/product_details/product_details.dart';

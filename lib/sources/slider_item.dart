@@ -97,27 +97,32 @@ class SliderItem extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    itemImage(
-                      item: items[index],
-                      color: items[index].discount == null ? bg : primary,
-                      btnTitle: items[index].discount == null
-                          ? "NEW"
-                          : "-" + items[index].discount.toString() + "%",
+                return GestureDetector(
+                  onTap: () => pushPage(ProductDetails(), context: context),
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        itemImage(
+                          item: items[index],
+                          color: items[index].discount == null ? bg : primary,
+                          btnTitle: items[index].discount == null
+                              ? "NEW"
+                              : "-" + items[index].discount.toString() + "%",
+                        ),
+                        SizedBox(height: hh(5)),
+                        ratingBar(item: items[index]),
+                        SizedBox(height: hh(5)),
+                        brand(item: items[index]),
+                        SizedBox(height: hh(5)),
+                        product(item: items[index]),
+                        SizedBox(height: hh(5)),
+                        items[index].discount == null
+                            ? price(item: items[index])
+                            : discount(item: items[index]),
+                      ],
                     ),
-                    SizedBox(height: hh(5)),
-                    ratingBar(item: items[index]),
-                    SizedBox(height: hh(5)),
-                    brand(item: items[index]),
-                    SizedBox(height: hh(5)),
-                    product(item: items[index]),
-                    SizedBox(height: hh(5)),
-                    items[index].discount == null
-                        ? price(item: items[index])
-                        : discount(item: items[index]),
-                  ],
+                  ),
                 );
               },
             ),
