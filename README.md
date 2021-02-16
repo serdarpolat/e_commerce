@@ -1,6 +1,6 @@
 # e_commerce
 
-<img src="scr.jpg" width="360" /> <img src="scr1.jpg" width="360" /> <img src="scr2.jpg" width="360" /> <img src="scr2-1.jpg" width="360" /> <img src="scr2-2.jpg" width="360" /> <img src="scr2-3.jpg" width="360" /> <img src="scr3.jpg" width="360" /> <img src="scr4.jpg" width="360" /> <img src="scr5.jpg" width="360" /> <img src="scr6.jpg" width="360" /> <img src="scr7.jpg" width="360" /> <img src="scr8.jpg" width="360" /> <img src="scr10.jpg" width="360" /> <img src="scr11.jpg" width="360" />
+<img src="scr.jpg" width="360" /> <img src="scr1.jpg" width="360" /> <img src="scr2.jpg" width="360" /> <img src="scr2-1.jpg" width="360" /> <img src="scr2-2.jpg" width="360" /> <img src="scr2-3.jpg" width="360" /> <img src="scr3.jpg" width="360" /> <img src="scr4.jpg" width="360" /> <img src="scr5.jpg" width="360" /> <img src="scr6.jpg" width="360" /> <img src="scr7.jpg" width="360" /> <img src="scr8.jpg" width="360" /> <img src="scr10.jpg" width="360" /> <img src="scr11.jpg" width="360" /> <img src="scr12.jpg" width="360" /> <img src="scr13.jpg" width="360" />
 
 ## Getting Started
 
