@@ -28,3 +28,7 @@ export 'package:e_commerce/pages/bag/add_shipping_address.dart';
 export 'package:e_commerce/pages/bag/successed.dart';
 export 'package:e_commerce/pages/favorites/favorites_page.dart';
 export 'package:e_commerce/pages/profile/profile_page.dart';
+export 'package:e_commerce/pages/profile/my_profile.dart';
+export 'package:e_commerce/pages/profile/my_orders.dart';
+export 'package:e_commerce/pages/profile/order_details.dart';
+export 'package:e_commerce/pages/profile/settings.dart';
